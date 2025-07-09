@@ -19,6 +19,8 @@ public:
 int main() {
     Car toyota;
     // set year to 2015, model to "Corolla" in a thread
+    std::thread th{&Car::setData, &toyota, 2015, "Yaris"};
+    th.join();
     toyota.print();
     return 0;
 }
