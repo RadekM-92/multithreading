@@ -10,9 +10,8 @@ std::mutex do_work_mutex;
 
 void do_work(int id) {
     this_thread::sleep_for(100ms);
-    do_work_mutex.lock();    
+    std::lock_guard<std::mutex> guard(do_work_mutex);
     cout << "Thread [" << id << "]: " << "Job done!" << endl;
-    do_work_mutex.unlock();
 }
 
 int main() {
